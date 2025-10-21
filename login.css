@@ -1,0 +1,54 @@
+
+.login form {
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 3px solid #34c759; /*hijau*/ 
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0000001a;
+    background-color: #ffff33;/*putih*/
+}
+
+.login form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffa07a; /*oren*/
+}
+
+.login form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #34c759; /*hijau*/
+}
+
+.login form input[type="text"]{
+    width: 85%;
+    height: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ffffff;
+    color:  1px solid #34c759; /*hijau*/
+}
+
+.login form input[type="password"]{
+    width: 85%;
+    height: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #34c759; /*hijau*/
+}
+
+.login form button[type="submit"]{
+    width: 100px;
+    height: 40px;
+    background-color: #ffa07a;
+    color: #ffffff;
+    padding: 10px;
+    border: none;
+    justify-items: center;
+    margin-left:30%;
+    border-radius: 5px;
+    cursor: pointer;
+}
