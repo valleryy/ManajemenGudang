@@ -30,7 +30,7 @@
       text-align: center;
       position: relative;
       overflow-x: hidden;
-      padding-bottom: 80px; /* ruang untuk footer agar tidak menempel */
+      padding-bottom: 80px;
     }
 
     /* Background dekoratif */
@@ -68,8 +68,22 @@
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       max-width: 450px;
       width: 90%;
+      margin-left: 170px;
+
+      /* Animasi masuk */
+      opacity: 0;
+      transform: translateY(30px);
+      animation: containerFade 1s ease forwards;
     }
 
+    @keyframes containerFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Logo animasi floating */
     .logo {
       background-color: var(--green-light);
       width: 80px;
@@ -80,36 +94,56 @@
       justify-content: center;
       margin: 0 auto 20px;
       font-size: 2rem;
+      animation: float 3s ease-in-out infinite, logoEntrance 1s ease forwards;
     }
 
-	.logo img {
-		width: 100%;
-		height:100%;
-		object-fit:contain;
-		border-radius:50%;
-		object-fit:cover;
-		display:block;
-	}
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes logoEntrance {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo img {
+      width: 100%;
+      height:100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display:block;
+    }
 
     h1 {
       color: #1b5e20;
       font-size: 1.8rem;
       margin-bottom: 10px;
+      opacity: 0;
+      animation: textFade 1s ease forwards;
+      animation-delay: 0.5s;
     }
-	h1 span {
-		color:#ffb84c;
-		font-size: 1.8rem;
-        margin-bottom: 10px;
+
+    h1 span {
+      color:#ffb84c;
     }
 
     p {
       color: #555;
       font-size: 1rem;
       margin-bottom: 30px;
+      opacity: 0;
+      animation: textFade 1s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes textFade {
+      0% { opacity: 0; transform: translateY(20px);}
+      100% { opacity: 1; transform: translateY(0);}
     }
 
     button {
-      background-color: var(--green-dark);
+      background: linear-gradient(135deg, var(--green-dark), var(--green-light));
       color: var(--white);
       border: none;
       padding: 12px 40px;
@@ -118,49 +152,35 @@
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;
-      text-decoration: none;
       display: inline-block;
+      opacity: 0;
+      animation: buttonFade 1s ease forwards;
+      animation-delay: 1.5s;
     }
 
     .btn-next:hover {
-      background-color: var(--green-light);
-      color: var(--green-dark);
+      transform: scale(1.03);
+      background: linear-gradient(135deg, var(--green-light), var(--green-dark));
     }
 
-    /* ===== Footer ===== */
-    footer {
-      background-color: var(--green-dark);
-      color: var(--white);
-      text-align: center;
-      padding: 16px 0;
-      font-size: 0.9rem;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.15);
-      z-index: 10;
+    @keyframes buttonFade {
+      0% { opacity: 0; transform: translateY(20px);}
+      100% { opacity: 1; transform: translateY(0);}
     }
+
   </style>
 </head>
 <body>
 
-  <!-- Elemen dekoratif -->
   <div class="bg-shape"></div>
   <div class="bg-shape-2"></div>
 
-  <!-- Konten utama -->
   <div class="container">
     <div class="logo"><img src="/MANAJEMENGUDANG/logo.jpg"></div>
     <h1><span>Nusantara</span> Pangan</h1>
     <p>Sistem Manajemen Gudang Sembako</p>
-    <button onclick="window.location.href='login.php'">Berikutnya➜</button>
+    <button onclick="window.location.href='login.php'">Berikutnya ➜</button>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    © 2025 Nusantara Pangan — Sistem Manajemen Gudang Sembako
-  </footer>
 
 </body>
 </html>

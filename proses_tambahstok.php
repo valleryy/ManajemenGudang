@@ -1,22 +1,26 @@
 <?php
 include 'koneksi.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $Kode_barang = mysqli_real_escape_string($koneksi, $_POST['Kode_barang']);
-    $Nama_barang = mysqli_real_escape_string($koneksi, $_POST['Nama_barang']);
-    $Satuan = mysqli_real_escape_string($koneksi, $_POST['Satuan']);
-    $Jumlah_stok = intval($_POST['Jumlah_stok']);
+if (isset($_POST['simpan'])) {
+    $kode_barang = mysqli_real_escape_string($koneksi, $_POST['Kode_barang']);
+    $nama_barang = mysqli_real_escape_string($koneksi, $_POST['Nama_barang']);
+    $satuan = mysqli_real_escape_string($koneksi, $_POST['Satuan']);
+    $jumlah_stok = (int)$_POST['Jumlah_stok'];
 
-    $query = "INSERT INTO stok_barang (Kode_barang, Nama_barang, Satuan, Jumlah_stok) VALUES ('$Kode_barang', '$Nama_barang', '$Satuan', $Jumlah_stok)";
-    $result = mysqli_query($koneksi, $query);
-
-    if ($result) {
-        header('Location: stok.php');  // redirect kembali ke halaman stok
-        exit;
+    // Simpan data baru
+    $query = "INSERT INTO stok_barang (Kode_barang, Nama_barang, Satuan, Jumlah_stok)
+              VALUES ('$kode_barang', '$nama_barang', '$satuan', '$jumlah_stok')";
+    
+    if (mysqli_query($koneksi, $query)) {
+        echo "<script>
+            alert('Data stok berhasil ditambahkan!');
+            window.location='stok.php';
+        </script>";
     } else {
-        echo "Error: " . mysqli_error($koneksi);
+        echo "<script>
+            alert('Gagal menambahkan data!');
+            window.location='tambah_stok.php';
+        </script>";
     }
-} else {
-    echo "Invalid request method.";
 }
 ?>

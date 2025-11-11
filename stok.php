@@ -59,6 +59,7 @@ header {
   object-fit: cover;
   border: 2px solid var(--white);
   animation: fadeIn 1s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
 .nama-gudang {
@@ -230,7 +231,7 @@ tr:hover {
 
     <?php
     $no = 1;
-    $query = "SELECT * FROM stok_barang ORDER BY id_stok DESC";
+    $query = "SELECT * FROM stok_barang ORDER BY id_stok ASC";
     $data = mysqli_query($koneksi, $query);
 
     if (!$data) {
@@ -247,8 +248,9 @@ tr:hover {
       <td><?= $d['Satuan']; ?></td>
       <td><?= $d['Jumlah_stok']; ?></td>
       <td>
-        <a class="btn-edit" href="edit_stok.php?id=<?= $d['id_stok']; ?>">Edit</a>
-        <a class="btn-hapus" href="hapus.php?id=<?= $d['id_stok']; ?>" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
+        <a  class="btn-edit" href="edit_stok.php?id_stok=<?= $d['id_stok']; ?>">Edit</a>
+
+        <a class="btn-hapus" href="hapus.php?id_stok=<?= $d['id_stok']; ?>" onclick="return confirm('Yakin ingin menghapus?')">Hapus</a>
       </td>
     </tr>
     <?php } ?>

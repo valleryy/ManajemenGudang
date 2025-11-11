@@ -61,6 +61,7 @@ header {
   object-fit: cover;
   border: 2px solid var(--white);
   animation: fadeIn 1s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
 .nama-gudang {
@@ -102,14 +103,14 @@ nav a.active {
 /* ===== MAIN CONTENT ===== */
 body {
   font-family: Arial, sans-serif;
-  background: #f1f5f9;
+  background: var(--cream);
   margin: 40px;
 }
 
 h2 {
-  color: #2f855a;
-  margin-top: 80px;
-  margin-bottom:40px;
+  color: var(--green-dark);
+  margin-top:120px;
+  margin-bottom: 20px;
   animation: fadeUp 1s ease;
 }
 
@@ -135,7 +136,7 @@ table {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  margin-top:40px;
+  margin-top:8px;
   animation: fadeUp 1s ease;
 }
 
@@ -212,7 +213,7 @@ button, .btn-edit, .btn-hapus {
 </header>
 
 <h2>📥 Data Barang Masuk</h2>
-<a href="tambah_barangmasuk.php">+ Tambah Barang</a>
+<a href="tambah_masuk.php">+ Tambah Barang</a>
 <br><br>
 
 <table>
@@ -229,7 +230,7 @@ button, .btn-edit, .btn-hapus {
 
 <?php
 $no = 1;
-$query = "SELECT * FROM barang_masuk ORDER BY id_masuk DESC";
+$query = "SELECT * FROM barang_masuk ORDER BY id_masuk ASC";
 $data = mysqli_query($koneksi, $query);
 
 if (!$data) {
@@ -244,7 +245,7 @@ while ($d = mysqli_fetch_array($data)) {
   <td><?= $d['Kode_barang']; ?></td>
   <td><?= $d['Nama_barang']; ?></td>
   <td><?= $d['Jumlah_masuk']; ?></td>
-  <td><?= $d['Tanggal_masuk']; ?></td>
+  <td><?= date('d-m-Y', strtotime($d['Tanggal_masuk'])); ?></td>
   <td><?= $d['Keterangan']; ?></td>
   <td>
     <a class="btn-edit" href="edit.php?id=<?= $d['id_masuk']; ?>">Edit</a>

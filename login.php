@@ -16,7 +16,7 @@
       --error-text: #d63031;
       --gudang:#1b5e20;
       --gudang-dua:#ffb84c;
-
+      --bg-solid: #f8f8f8;
     }
 
     * {
@@ -25,39 +25,71 @@
     }
 
     body {
-      background: linear-gradient(180deg, var(--cream) 30%, var(--green-light) 100%);
+      background-color: var(--bg-solid);
       height: 100vh;
       margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      position: relative;
+    }
+
+    /* Background modern */
+    .bg-shape {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    .shape1 {
+      width: 400px;
+      height: 400px;
+      background-color: var(--green-light);
+      top: -100px;
+      right: -100px;
+    }
+
+    .shape2 {
+      width: 300px;
+      height: 300px;
+      background-color: var(--green-dark);
+      bottom: -100px;
+      left: -80px;
+    }
+
+    .pattern {
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      top: -50%;
+      left: -50%;
+      background-image: radial-gradient(circle, rgba(0,0,0,0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
+      z-index: 0;
     }
 
     /* Animasi Halus */
     @keyframes fadeSlide {
-      from {
-        opacity: 0;
-        transform: translateY(-40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .login-container {
+      position: relative;
+      z-index: 1;
       background: var(--white);
       padding: 60px 40px;
       border-radius: 25px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       width: 360px;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
       animation: fadeSlide 1s ease-out;
-      position: relative;
     }
 
     /* LOGO FOTO */
@@ -93,6 +125,7 @@
       font-weight: 700;
       font-size: 22px;
     }
+
     .error-box {
       background-color: var(--error-bg);
       color: var(--error-text);
@@ -129,7 +162,7 @@
 
     .input-group input:focus {
       border-color: var(--green-light);
-      box-shadow: 0 0 6px rgba(104, 211, 145, 0.4);
+      box-shadow: 0 0 6px rgba(104, 211, 145, 0.3);
       outline: none;
     }
 
@@ -158,23 +191,28 @@
       position: absolute;
       width: 280px;
       height: 40px;
-      background: radial-gradient(rgba(0,0,0,0.2), transparent);
+      background: radial-gradient(rgba(0,0,0,0.15), transparent);
       bottom: 110px;
       filter: blur(10px);
       z-index: -1;
     }
+
   </style>
 </head>
 <body>
+
+  <!-- Background modern -->
+  <div class="bg-shape shape1"></div>
+  <div class="bg-shape shape2"></div>
+  <div class="pattern"></div>
 
   <div class="login-container">
     <div class="logo">
       <img src="logo.jpg" alt="Logo Nusantara Pangan">
     </div>
 
-    <h1>Nusantara <span>Pangan</span> </h1>
+    <h1>Nusantara <span>Pangan</span></h1>
     
-
     <?php
     if (isset($_GET['error'])) {
       echo '<div class="error-box">Username atau Password Salah!</div>';
